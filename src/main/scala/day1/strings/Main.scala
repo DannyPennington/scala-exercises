@@ -11,5 +11,10 @@ object Main extends App {
       word.substring(num1)
     }
   }
-  println(cut("Hello", 2))
+  // println(cut("Hello", 2))
+  def joinReplace(a: String, b: String, c: String, d: String): String = {
+    var word = a+b
+    word.replace(c,d)
+  }
+  println(joinReplace("Ha","llo","a","e"))
 }
