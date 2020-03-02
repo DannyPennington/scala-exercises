@@ -12,6 +12,7 @@ object Main extends App {
         println(s"$num1 bottles of beer on the wall, $num1 bottles of beer, you take one down, pass it around, ${num1-1} bottles of beer on the wall")
       num1 -= 1
     } while (num1 > 0)
+    println("\n You need to buy some more beer")
   }
-  beer(5)
+  beer(20)
 }
