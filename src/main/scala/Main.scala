@@ -1,5 +1,8 @@
 object Main extends App {
 
-  println("Hello World!")
+  var example = "Hello world"
+
+  println(example)
+
 
 }
