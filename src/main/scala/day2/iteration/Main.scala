@@ -4,17 +4,16 @@ import scala.collection.mutable.ListBuffer
 
 object Main extends App {
 
-  def wordMultiply(word: String, num: Int): Unit = {
-    println(word*num)
+  def wordMultiply(word: String, num: Int): String = {
+    word*num+"\n"
   }
-  wordMultiply("Hello",5)
+  //println(wordMultiply("z",5))
 
-  def rectangle(word: String, num: Int):Unit = {
-    for (i <- 1 to num) {
-      println(word*num)
-    }
+  def rectangle(word: String, num: Int):String = {
+    wordMultiply(word,num)*num
   }
-  // rectangle("z",5)
+
+  println(rectangle("z",5))
 
   def fizzBuzz(fizz: String, buzz: String, num: Int):String = {
     val fin = ListBuffer.empty[String]
