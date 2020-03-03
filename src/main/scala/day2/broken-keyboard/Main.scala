@@ -20,6 +20,7 @@ object Main extends App {
     println(words.maxBy(_.length))
     }
 
+  // Asking for user input
   val number = scala.io.StdIn.readLine("How many keyboards? ").toInt
   for (i <- (0 until number)) {
     val keyboard = scala.io.StdIn.readLine("Which keys work? ")
