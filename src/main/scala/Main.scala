@@ -1,6 +1,6 @@
 object Main extends App {
 
-  var example = "Hello world"
+  val example = "Hello world"
 
   println(example)
 

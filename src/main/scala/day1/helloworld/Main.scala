@@ -5,7 +5,7 @@ object Main extends App {
   println("Hello world")
 
   def hello() = {
-    var x = "Hello world!"
+    val x = "Hello world!"
     println(x)
   }
 
