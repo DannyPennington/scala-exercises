@@ -5,19 +5,18 @@ object Main extends App {
     val lines = Source.fromFile("/home/qa-admin/Downloads/dictionary.txt").getLines.toArray
     val words = scala.collection.mutable.ArrayBuffer.empty[String]
     val let = letters.toList
-    var x = 0
     for (word <- lines) {
-      for (i <- let) {
-        if (word.contains(i)) {
-          x += 1
-          if (x == word.length()) {
-            words += word
-          }
+      var x = word.length()
+      for (i <- word) {
+        if (!let.contains(i)) {
+          x -= 1
         }
       }
-      x = 0
+      if (x == word.length()) {
+        words += word
+      }
+      }
+    println(words.maxBy(_.length))
     }
-    println(words)
-  }
-  letterFind("qwertyuiopasdfghjklmnbvcxz")
+  letterFind("hjklo")
 }
