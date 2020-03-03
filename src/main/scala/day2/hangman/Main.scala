@@ -8,7 +8,8 @@ object Main extends App {
   * 2) Choose random word from list
   * 3) Turn word into underscores and show to user
   * 4) Prompt user for letter guess
-  * 5) Check if letter is in word, fill in letter if it is, draw picture and subtract lives if not. Remove from letter list either way
+  * 5) Check if letter is in word
+  * 6) Fill in letter if it is, draw picture and subtract lives if not. Remove from letter list either way
   *
    */
 
@@ -32,10 +33,19 @@ object Main extends App {
     x
   }
   // Calling underscore(randomise) will generate the underscores for the word that is chosen
-
-  def checkLetter(letter:String, word: String): Unit = {
+  def checkLetter(letter:String, word: String): Boolean = {
     if (word.contains(letter)) {true}
     else {false}
   }
 
+
+  // Play game here:
+  var lives = 7
+  val answer = randomise()
+  var guesses = scala.collection.mutable.ArrayBuffer.empty[String]
+  println(underscore(answer))
+  while (lives > 0) {
+    val guess = scala.io.StdIn.readLine("Which letter will you guess? ").toString
+
+  }
 }
