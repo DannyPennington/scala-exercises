@@ -19,5 +19,11 @@ object Main extends App {
     //println(words)
     println(words.maxBy(_.length))
     }
-  letterFind("edcf")
+
+  val number = scala.io.StdIn.readLine("How many keyboards? ").toInt
+  for (i <- (0 until number)) {
+    val keyboard = scala.io.StdIn.readLine("Which keys work? ")
+    letterFind(keyboard)
+  }
+
 }
