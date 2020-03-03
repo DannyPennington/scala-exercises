@@ -10,5 +10,19 @@ object Main extends App {
       num1*num2
     }
   }
-  println(sum2(5,5,false))
+  def conditional(num1: Int,num2: Int, con: Boolean): Int = {
+    if (num1==0) {
+      num2
+    }
+    else if (num2==0) {
+      num1
+    }
+    else if (con == true) {
+      num1+num2
+    }
+    else {
+      num1*num2
+    }
+  }
+  println(conditional(4,0,false))
 }
