@@ -12,8 +12,7 @@ object Main extends App {
   def rectangle(word: String, num: Int):String = {
     wordMultiply(word,num)*num
   }
-
-  println(rectangle("z",5))
+  //println(rectangle("z",5))
 
   def fizzBuzz(fizz: String, buzz: String, num: Int):String = {
     val fin = ListBuffer.empty[String]
@@ -34,4 +33,11 @@ object Main extends App {
     fin.toString
   }
   // println(fizzBuzz("Fizz","Buzz",15))
+  def fizzbuzz2(fizz: String, buzz: String, num: Int):String = {
+    val vec = (1 to num).toVector
+    var vec2 = vec updated(2,fizz)
+    vec2 = vec2 updated(4,buzz)
+    vec2.toString
+  }
+  println(fizzbuzz2("Fizz","Buzz", 15))
 }
