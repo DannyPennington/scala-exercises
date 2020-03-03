@@ -5,11 +5,9 @@ import scala.collection.mutable.ListBuffer
 object Main extends App {
 
   def wordMultiply(word: String, num: Int): Unit = {
-    for (i <- 1 to num) {
-      println(word)
-    }
+    println(word*num)
   }
-  // wordMultiply("Hello",5)
+  wordMultiply("Hello",5)
 
   def rectangle(word: String, num: Int):Unit = {
     for (i <- 1 to num) {
@@ -36,5 +34,5 @@ object Main extends App {
     }
     fin.toString
   }
-  println(fizzBuzz("Fizz","Buzz",15))
+  // println(fizzBuzz("Fizz","Buzz",15))
 }
