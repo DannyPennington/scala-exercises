@@ -30,6 +30,13 @@ object Main extends App {
     }
     fin.toString
   }}
-  println(fizzBuzz("Fizz","Buzz",15))
+  //println(fizzBuzz("Fizz","Buzz",15))
+  def pattern2(nums: Any):String = nums match{
+    case List(x,y) => s"$y,$x"
+    case Array(x,y) => s"$y,$x"
+    case (x,y) => s"$y,$x"
+    case _ => "Not a valid input type"
 
+      }
+  println(pattern2(List(3,6,9)))
 }
