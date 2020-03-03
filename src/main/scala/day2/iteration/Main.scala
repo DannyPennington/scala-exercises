@@ -25,13 +25,13 @@ object Main extends App {
         fin += (fizz + buzz)
       }
       else if (i % 3 == 0) {
-        fin += (buzz)
+        fin += buzz
       }
       else if (i % 5 == 0) {
-        fin += (fizz)
+        fin += fizz
       }
       else {
-        fin += (i.toString)
+        fin += i.toString
       }
     }
     fin.toString
