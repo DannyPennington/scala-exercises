@@ -7,8 +7,8 @@ object Main extends App {
     val let = letters.toList
     for (word <- lines) {
       var x = word.length()
-      for (i <- word) {
-        if (!let.contains(i)) {
+      for (i <- (0 until word.length())) {
+        if (!let.contains(word(i))) {
           x -= 1
         }
       }
@@ -16,7 +16,8 @@ object Main extends App {
         words += word
       }
       }
+    //println(words)
     println(words.maxBy(_.length))
     }
-  letterFind("hjklo")
+  letterFind("edcf")
 }
