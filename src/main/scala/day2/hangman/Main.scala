@@ -50,7 +50,7 @@ object Main extends App {
         }
       }
       if (!correctletter) {
-        print("_ ")
+        print(" _ ")
       }
     }
   }
@@ -69,7 +69,6 @@ object Main extends App {
       if (!checkLetter(guess, answer, guesses)) {
         lives -= 1
       }
-
       printAnswer(answer, guesses)
       println("\n")
       var correctletters = 0
