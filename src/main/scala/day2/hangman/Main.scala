@@ -21,7 +21,7 @@ object Main extends App {
   def randomise(): String = {
     val r = scala.util.Random
     val word = readFile()
-    word(r.nextInt(word.length))
+    word(r.nextInt(word.length)).toLowerCase()
   }
 
   def underscore(word: String): String = {
