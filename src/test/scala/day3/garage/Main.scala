@@ -20,7 +20,6 @@ object Main extends App {
   jason.addVehicle(harley)
   jason.fix(ford)
   println(jason.currentVehicles())
-
   //jason.addEmployee(dave)
   //jason.addEmployee(jan)
   //jason.addEmployee(big)
