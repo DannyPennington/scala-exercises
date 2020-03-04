@@ -28,7 +28,7 @@ object Main extends App {
 
   def underscore(word: String): String = {
     var underscores = ""
-    for (i <- (0 until word.length)) {
+    for (i <- 0 until word.length) {
       underscores += "_ "
     }
     underscores
@@ -84,8 +84,8 @@ object Main extends App {
         }
       }
 
-      if (!(win == true)) {
-        println(s"Letters guessed: ${guesses}")
+      if (!win) {
+        println(s"Letters guessed: $guesses")
         println(s"You have $lives lives remaining")
         println("\n")
       }
