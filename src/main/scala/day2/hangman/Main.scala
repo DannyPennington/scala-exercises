@@ -11,6 +11,8 @@ import scala.io.Source
 * 6) Fill in letter if it is, draw picture and subtract lives if not. Remove from letter list either way
 *
  */
+//  Console.flush() to clear screen
+
 
 object Main extends App {
 
@@ -25,11 +27,11 @@ object Main extends App {
   }
 
   def underscore(word: String): String = {
-    var x = ""
+    var underscores = ""
     for (i <- (0 until word.length)) {
-      x += "_ "
+      underscores += "_ "
     }
-    x
+    underscores
   }
 
   def checkLetter(guess:String, word: String, guesses: ArrayBuffer[String]): Boolean = {
@@ -40,14 +42,14 @@ object Main extends App {
 
   def printAnswer(answer: String, guesses: ArrayBuffer[String]):Unit = {
     for (i <- answer) {
-      var x = 0
+      var correctletter = 0
       for (j <- guesses) {
         if (i.toString == j) {
           print(i)
-          x += 1
+          correctletter += 1
         }
       }
-      if (x < 1) {
+      if (correctletter < 1) {
         print("_ ")
       }
     }
@@ -70,12 +72,12 @@ object Main extends App {
 
       printAnswer(answer, guesses)
       println("\n")
-      var y = 0
+      var correctletters = 0
       for (i <- answer) {
         if (guesses.contains(i.toString)) {
-          y += 1
+          correctletters += 1
         }
-        if (y == answer.length) {
+        if (correctletters == answer.length) {
           println("You win!")
           win = true
           lives = 0
