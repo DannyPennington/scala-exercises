@@ -60,23 +60,34 @@ object Main extends App {
   var lives = 7
   val answer = randomise()
   var guesses = ArrayBuffer.empty[String]
+  var win = false
   println(underscore(answer))
 
   while (lives > 0) {
     val guess = scala.io.StdIn.readLine("Which letter will you guess? ").toString
-    if (checkLetter(guess,answer, guesses)) {
-      // Put function for correct answer here
-    }
-    else {
-      // Put function for incorrect answer here
+    if (!checkLetter(guess,answer, guesses)) {
       lives -= 1
     }
+
     printAnswer(answer, guesses)
     println("\n")
-    println(s"Letters guessed: $guesses")
-    println(s"You have $lives lives remaining")
-    println("\n")
+    var y = 0
+    for (i <- answer) {
+      if (guesses.contains(i.toString)) {
+        y += 1
+      }
+      if (y==answer.length) {
+        println("You win!")
+        win = true
+        lives = 0
+      }
+    }
 
+    if (!(win == true)) {
+      println(s"Letters guessed: $guesses")
+      println(s"You have $lives lives remaining")
+      println("\n")
+    }
 
   }
 }
