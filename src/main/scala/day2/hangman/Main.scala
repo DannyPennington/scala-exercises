@@ -15,15 +15,13 @@ import scala.io.Source
 object Main extends App {
 
   def readFile(): Array[String] = {
-    val lines = Source.fromFile("/home/qa-admin/Downloads/words.txt").getLines.toArray
-    lines
+    Source.fromFile("/home/qa-admin/Downloads/words.txt").getLines.toArray
   }
 
   def randomise(): String = {
     val r = scala.util.Random
     val word = readFile()
-    val x = word(r.nextInt(word.length))
-    x
+    word(r.nextInt(word.length))
   }
 
   def underscore(word: String): String = {
@@ -33,7 +31,7 @@ object Main extends App {
     }
     x
   }
-  // Calling underscore(randomise) will generate the underscores for the word that is chosen
+
   def checkLetter(guess:String, word: String, guesses: ArrayBuffer[String]): Boolean = {
     guesses += guess
     if (word.contains(guess)) {true}
