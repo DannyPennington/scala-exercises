@@ -42,10 +42,15 @@ object Main extends App {
 
   def printAnswer(answer: String, guesses: ArrayBuffer[String]):Unit = {
     for (i <- answer) {
+      var x = 0
       for (j <- guesses) {
         if (i.toString == j) {
           print(i)
+          x += 1
         }
+      }
+      if (x < 1) {
+        print("_ ")
       }
     }
   }
@@ -67,6 +72,10 @@ object Main extends App {
       lives -= 1
     }
     printAnswer(answer, guesses)
+    println("\n")
+    println(s"Letters guessed: $guesses")
+    println(s"You have $lives lives remaining")
+    println("\n")
 
 
   }
