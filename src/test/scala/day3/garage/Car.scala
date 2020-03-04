@@ -7,5 +7,5 @@ class Car(val yom:Int, val price: Int, val car_model:String) extends Vehicle {
   def wheels = 4
   def model: String = car_model
 
-  override def toString: String = s"\n Model: $car_model \n Year: $yom \n Price: £$cost"
+  override def toString: String = s"\n ID: $ID \n Model: $car_model \n Year: $yom \n Price: £$cost"
 }

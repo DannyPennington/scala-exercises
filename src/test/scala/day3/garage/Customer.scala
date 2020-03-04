@@ -4,7 +4,6 @@ class Customer(val customername:String, val email:String, val customer_ID:Int, v
   def this(customername: String, email:String, customer_ID:Int) = this(customername, email, customer_ID, "None")
   def name: String = customername
   def persontype:String = "Customer"
-  def ID: Int = customer_ID
 
   override def toString:String = s"$persontype $ID \n Name: $name \n Email: $email \n Vehicles in shop: $owned_vehicles"
 }
