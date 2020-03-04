@@ -6,6 +6,11 @@ abstract class Vehicle {
   def wheels: Int
   def model: String
   var ID:Int = 0
+  var working:Boolean = false
+
+  def fixVehicle():Unit = {
+    working = true
+  }
   def setID(x: Int) : Unit= {
     ID = x
   }

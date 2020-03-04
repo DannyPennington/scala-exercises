@@ -23,6 +23,11 @@ class Garage {
   def currentEmployees():ArrayBuffer[Employee] = {
     employee_array
   }
-
+  def removeEmployee(item: Int): Unit = {
+    employee_array.remove(item)
+  }
+  def fix(item:Vehicle):Unit = {
+    item.fixVehicle()
+  }
 
 }

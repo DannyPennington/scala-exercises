@@ -1,11 +1,10 @@
 package day3.garage
 
 class Car(val yom:Int, val price: Int, val car_model:String) extends Vehicle {
-
-  def cost: Int = price
   def year: Int = yom
-  def wheels = 4
+  def cost: Int = price
   def model: String = car_model
+  def wheels = 4
 
-  override def toString: String = s"\n ID: $ID \n Model: $car_model \n Year: $yom \n Price: £$cost"
+  override def toString: String = s"\n Car ID: $ID, Model: $car_model, Year: $yom, Price: £$cost, Working?: $working"
 }
