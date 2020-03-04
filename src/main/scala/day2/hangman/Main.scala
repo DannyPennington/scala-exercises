@@ -42,14 +42,14 @@ object Main extends App {
 
   def printAnswer(answer: String, guesses: ArrayBuffer[String]):Unit = {
     for (i <- answer) {
-      var correctletter = 0
+      var correctletter = false
       for (j <- guesses) {
         if (i.toString == j) {
           print(i)
-          correctletter += 1
+          correctletter = true
         }
       }
-      if (correctletter < 1) {
+      if (!correctletter) {
         print("_ ")
       }
     }
@@ -83,7 +83,6 @@ object Main extends App {
           lives = 0
         }
       }
-
       if (!win) {
         println(s"Letters guessed: $guesses")
         println(s"You have $lives lives remaining")
@@ -92,6 +91,5 @@ object Main extends App {
 
     }
   }
-
   hangman()
 }
