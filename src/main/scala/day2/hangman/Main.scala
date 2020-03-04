@@ -55,39 +55,43 @@ object Main extends App {
     }
   }
 
+  def hangman(): Unit = {
+    // Play game here:
+    var lives = 7
+    val answer = randomise()
+    var guesses = ArrayBuffer.empty[String]
+    var win = false
+    println(underscore(answer))
 
-  // Play game here:
-  var lives = 7
-  val answer = randomise()
-  var guesses = ArrayBuffer.empty[String]
-  var win = false
-  println(underscore(answer))
-
-  while (lives > 0) {
-    val guess = scala.io.StdIn.readLine("Which letter will you guess? ").toString
-    if (!checkLetter(guess,answer, guesses)) {
-      lives -= 1
-    }
-
-    printAnswer(answer, guesses)
-    println("\n")
-    var y = 0
-    for (i <- answer) {
-      if (guesses.contains(i.toString)) {
-        y += 1
+    while (lives > 0) {
+      val guess = scala.io.StdIn.readLine("Which letter will you guess? ").toString
+      for (i <- 0 to 7) {println("\n")}
+      if (!checkLetter(guess, answer, guesses)) {
+        lives -= 1
       }
-      if (y==answer.length) {
-        println("You win!")
-        win = true
-        lives = 0
-      }
-    }
 
-    if (!(win == true)) {
-      println(s"Letters guessed: $guesses")
-      println(s"You have $lives lives remaining")
+      printAnswer(answer, guesses)
       println("\n")
-    }
+      var y = 0
+      for (i <- answer) {
+        if (guesses.contains(i.toString)) {
+          y += 1
+        }
+        if (y == answer.length) {
+          println("You win!")
+          win = true
+          lives = 0
+        }
+      }
 
+      if (!(win == true)) {
+        println(s"Letters guessed: ${guesses}")
+        println(s"You have $lives lives remaining")
+        println("\n")
+      }
+
+    }
   }
+
+  hangman()
 }
