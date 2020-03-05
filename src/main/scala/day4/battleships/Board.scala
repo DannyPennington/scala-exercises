@@ -27,10 +27,10 @@ class Board() {
   def addShip(board: Array[Array[String]], length: Int, y: Int, x: Int, direction: String): Array[Array[String]] = {
     board(y - 1)(x - 1) = " 1 "
     direction match {
-      case "up" | "Up" => {for (i <- 1 to length) {board(y - i)(x - 1) = " 1 "}}
-      case "down" | "Down" => {for (i <- 1 to length) {board(y + i - 2)(x - 1) = " 1 "}}
-      case "left" | "Left" => {for (i <- 1 to length) {board(y - 1)(x - i) = " 1 "}}
-      case "right" | "Right" => {for (i <- 1 to length) {board(y - 1)(x + i - 2) = " 1 "}}
+      case "up" | "Up" => for (i <- 1 to length) {board(y - i)(x - 1) = " 1 "}
+      case "down" | "Down" => for (i <- 1 to length) {board(y + i - 2)(x - 1) = " 1 "}
+      case "left" | "Left" => for (i <- 1 to length) {board(y - 1)(x - i) = " 1 "}
+      case "right" | "Right" => for (i <- 1 to length) {board(y - 1)(x + i - 2) = " 1 "}
     }
     board
   }
