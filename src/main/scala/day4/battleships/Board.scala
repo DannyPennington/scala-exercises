@@ -44,12 +44,11 @@ class Board() {
         case "down" | "Down" => for (i <- 1 to length) {temp_arr(y + i - 2)(x - 1) = " 1 "}
         case "left" | "Left" => for (i <- 1 to length) {temp_arr(y - 1)(x - i) = " 1 "}
         case "right" | "Right" => for (i <- 1 to length) {temp_arr(y - 1)(x + i - 2) = " 1 "}
-        case _ => {
+        case _ =>
           temp_arr(y - 1)(x - 1) = " ~ "
           println("Please enter a valid selection!")
           println("")
           return false
-        }
       }
     }
     else {
@@ -72,11 +71,11 @@ class Board() {
 
   }
 
-  def lose(board: Array[Array[String]] = arr):Boolean = {
+  def lose():Boolean = {
 
     for (i <- 0 until 12) {
       for (j <- 0 until 12) {
-        if (board(i)(j) == " 1 ") {
+        if (arr(i)(j) == " 1 ") {
           return false
         }
       }
