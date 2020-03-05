@@ -10,7 +10,7 @@ class Board() {
     }
   }
 
-  def printGrid(size: Int = 12): Unit = {
+  def printEither(board: Array[Array[String]], size: Int = 12): Unit = {
     print("      A  B  C  D  E  F  G  H  I  J  K  L")
     println("")
     for (i <- 0 until size) {
@@ -20,22 +20,7 @@ class Board() {
       else {
         print(s"  ${i + 1} ")
       }
-      visarr(i).foreach(print)
-      println("")
-    }
-    println("")
-  }
-  def printSecret(size: Int = 12): Unit = {
-    print("      A  B  C  D  E  F  G  H  I  J  K  L")
-    println("")
-    for (i <- 0 until size) {
-      if (i < 9) {
-        print(s"  ${i + 1}  ")
-      }
-      else {
-        print(s"  ${i + 1} ")
-      }
-      arr(i).foreach(print)
+      board(i).foreach(print)
       println("")
     }
     println("")
