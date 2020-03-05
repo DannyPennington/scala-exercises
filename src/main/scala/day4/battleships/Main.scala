@@ -2,6 +2,14 @@ package day4.battleships
 
 object Main extends App {
 
+  def test():Unit = {
+    val player1 = new Board
+    val player2 = new Board
+    player1.addShip(3,1,1,"right")
+    player2.addShip(4,1,1,"right")
+    core()
+
+  }
   val player1 = new Board
   val player2 = new Board
   player1.addShip(3,1,1,"right")
@@ -39,12 +47,6 @@ object Main extends App {
         }
       }
     }
-    if (player1.lose()) {println("Player 2 wins, congrats")
-      println("Winner's board: ")
-      player2.printEither(player2.arr)}
-    else { println("Player 1 wins, congrats")
-      println("Winner's board: ")
-      player1.printEither(player1.arr)}
   }
 
   def core2():Unit = {
@@ -58,12 +60,6 @@ object Main extends App {
         core()
       }
     }
-    if (player1.lose()) {println("Player 2 wins, congrats")
-      println("Winner's board: ")
-      player2.printEither(player2.arr)}
-    else { println("Player 1 wins, congrats")
-      println("Winner's board: ")
-      player1.printEither(player1.arr)}
   }
 
   def play():Unit = {
@@ -79,7 +75,14 @@ object Main extends App {
    shipSetup(player2)
 
    core()
+    if (player1.lose()) {println("Player 2 wins, congrats")
+      println("Winner's board: ")
+      player2.printEither(player2.arr)}
+    else { println("Player 1 wins, congrats")
+      println("Winner's board: ")
+      player1.printEither(player1.arr)}
  }
 
   core()
+
 }
