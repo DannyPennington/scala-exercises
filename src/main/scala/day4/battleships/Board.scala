@@ -2,7 +2,7 @@ package day4.battleships
 
 class Board() {
   val arr: Array[Array[String]] = Array.ofDim[String](12, 12)
-  var visarr: Array[Array[String]]  = Array.ofDim[String](12, 12)
+  val visarr: Array[Array[String]]  = Array.ofDim[String](12, 12)
   for (i <- 0 until 12) {
     for (j <- 0 until 12) {
       visarr(i)(j) = " ~ "
@@ -53,7 +53,7 @@ class Board() {
     }
 
   def addShip(length: Int, y: Int, x: Int, direction: String): Boolean = {
-    var temp_arr = arr
+    val temp_arr = arr
     if (checkValid(y,x)){
       temp_arr(y - 1)(x - 1) = " 1 "
       direction match {
