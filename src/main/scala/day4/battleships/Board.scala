@@ -49,15 +49,14 @@ class Board() {
   }
 
   def lose(board: Array[Array[String]] = arr):Boolean = {
+
     for (i <- 0 until 12) {
       for (j <- 0 until 12) {
-        println(board(i)(j))
         if (board(i)(j) == " 1 ") {
-          false
+          return false
         }
-        else {}
       }
     }
-    true
+  true
   }
 }
