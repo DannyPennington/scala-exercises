@@ -2,10 +2,10 @@ package day4.battleships
 
 class Board() {
   val arr: Array[Array[String]] = Array.ofDim[String](12, 12)
-  var vis_arr: Array[Array[String]]  = Array.ofDim[String](12, 12)
+  var visarr: Array[Array[String]]  = Array.ofDim[String](12, 12)
   for (i <- 0 until 12) {
     for (j <- 0 until 12) {
-      vis_arr(i)(j) = " ~ "
+      visarr(i)(j) = " ~ "
       arr(i)(j) = " ~ "
     }
   }
@@ -20,7 +20,7 @@ class Board() {
       else {
         print(s"  ${i + 1} ")
       }
-      vis_arr(i).foreach(print)
+      visarr(i).foreach(print)
       println("")
     }
     println("")
@@ -77,12 +77,12 @@ class Board() {
   def shoot(y:Int, x:Int ):Boolean = {
     if (arr(y-1)(x-1) == " 1 ") {
       println("That's a hit")
-      vis_arr(y-1)(x-1) = " X "
+      visarr(y-1)(x-1) = " X "
       arr(y-1)(x-1) = " X "
       true
     }
     else{ println("You missed")
-      vis_arr(y-1)(x-1) = " O "
+      visarr(y-1)(x-1) = " O "
       false
     }
 
