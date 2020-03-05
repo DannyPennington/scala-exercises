@@ -29,12 +29,13 @@ class Board() {
       true
     }
     else {
-      println("Please enter a valid selection")
+      println("Please enter a valid selection!")
+      println("")
       false
     }
     }
 
-  def addShip(length: Int, y: Int, x: Int, direction: String): Array[Array[String]] = {
+  def addShip(length: Int, y: Int, x: Int, direction: String): Boolean = {
     var temp_arr = arr
     if (checkValid(y,x)){
       temp_arr(y - 1)(x - 1) = " 1 "
@@ -43,13 +44,19 @@ class Board() {
         case "down" | "Down" => for (i <- 1 to length) {temp_arr(y + i - 2)(x - 1) = " 1 "}
         case "left" | "Left" => for (i <- 1 to length) {temp_arr(y - 1)(x - i) = " 1 "}
         case "right" | "Right" => for (i <- 1 to length) {temp_arr(y - 1)(x + i - 2) = " 1 "}
+        case _ => {
+          temp_arr(y - 1)(x - 1) = " ~ "
+          println("Please enter a valid selection!")
+          println("")
+          return false
+        }
       }
     }
     else {
-      return arr
+      return false
     }
     arr = temp_arr
-    arr
+    true
   }
 
   def shoot(y:Int, x:Int ):Boolean = {
