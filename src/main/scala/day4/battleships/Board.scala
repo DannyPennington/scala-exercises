@@ -8,7 +8,7 @@ class Board() {
     }
   }
 
-  def printGrid(grid: Array[Array[String]]= arr, size: Int = 12): Unit = {
+  def printGrid(size: Int = 12): Unit = {
     print("      A  B  C  D  E  F  G  H  I  J  K  L")
     println("")
     for (i <- 0 until size) {
@@ -18,31 +18,33 @@ class Board() {
       else {
         print(s"  ${i + 1} ")
       }
-      grid(i).foreach(print)
+      arr(i).foreach(print)
       println("")
     }
     println("")
   }
 
-  def addShip(board: Array[Array[String]], length: Int, y: Int, x: Int, direction: String): Array[Array[String]] = {
-    board(y - 1)(x - 1) = " 1 "
+  //def checkValid()
+
+  def addShip(length: Int, y: Int, x: Int, direction: String): Array[Array[String]] = {
+    arr(y - 1)(x - 1) = " 1 "
     direction match {
-      case "up" | "Up" => for (i <- 1 to length) {board(y - i)(x - 1) = " 1 "}
-      case "down" | "Down" => for (i <- 1 to length) {board(y + i - 2)(x - 1) = " 1 "}
-      case "left" | "Left" => for (i <- 1 to length) {board(y - 1)(x - i) = " 1 "}
-      case "right" | "Right" => for (i <- 1 to length) {board(y - 1)(x + i - 2) = " 1 "}
+      case "up" | "Up" => for (i <- 1 to length) {arr(y - i)(x - 1) = " 1 "}
+      case "down" | "Down" => for (i <- 1 to length) {arr(y + i - 2)(x - 1) = " 1 "}
+      case "left" | "Left" => for (i <- 1 to length) {arr(y - 1)(x - i) = " 1 "}
+      case "right" | "Right" => for (i <- 1 to length) {arr(y - 1)(x + i - 2) = " 1 "}
     }
-    board
+    arr
   }
 
-  def shoot(board: Array[Array[String]] = arr,y:Int, x:Int ):Boolean = {
-    if (board(y-1)(x-1) == " 1 ") {
+  def shoot(y:Int, x:Int ):Boolean = {
+    if (arr(y-1)(x-1) == " 1 ") {
       println("That's a hit")
-      board(y-1)(x-1) = " X "
+      arr(y-1)(x-1) = " X "
       true
     }
     else{ println("You missed")
-      board(y-1)(x-1) = " O "
+      arr(y-1)(x-1) = " O "
       false
     }
 

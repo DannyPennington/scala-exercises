@@ -9,7 +9,7 @@ object Main extends App {
 
   val player1 = new Board
   val player2 = new Board
-  player1.addShip(player1.arr,3,1,1,"right")
+  player1.addShip(3,1,1,"right")
   player1.shoot(y=1,x=1)
   player1.shoot(y=1,x=2)
   //player1.shoot(y=1,x=3)
@@ -20,6 +20,7 @@ object Main extends App {
  def play():Unit = {
    val player1 = new Board
    val player2 = new Board
+   scala.io.StdIn.readLine("").toString
 
  }
 }
