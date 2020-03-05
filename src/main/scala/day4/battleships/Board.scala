@@ -24,16 +24,31 @@ class Board() {
     println("")
   }
 
-  //def checkValid()
+  def checkValid(y:Int, x:Int):Boolean = {
+    if (arr(y-1)(x-1) == " ~ ") {
+      true
+    }
+    else {
+      println("Please enter a valid selection")
+      false
+    }
+    }
 
   def addShip(length: Int, y: Int, x: Int, direction: String): Array[Array[String]] = {
-    arr(y - 1)(x - 1) = " 1 "
-    direction match {
-      case "up" | "Up" => for (i <- 1 to length) {arr(y - i)(x - 1) = " 1 "}
-      case "down" | "Down" => for (i <- 1 to length) {arr(y + i - 2)(x - 1) = " 1 "}
-      case "left" | "Left" => for (i <- 1 to length) {arr(y - 1)(x - i) = " 1 "}
-      case "right" | "Right" => for (i <- 1 to length) {arr(y - 1)(x + i - 2) = " 1 "}
+    var temp_arr = arr
+    if (checkValid(y,x)){
+      temp_arr(y - 1)(x - 1) = " 1 "
+      direction match {
+        case "up" | "Up" => for (i <- 1 to length) {temp_arr(y - i)(x - 1) = " 1 "}
+        case "down" | "Down" => for (i <- 1 to length) {temp_arr(y + i - 2)(x - 1) = " 1 "}
+        case "left" | "Left" => for (i <- 1 to length) {temp_arr(y - 1)(x - i) = " 1 "}
+        case "right" | "Right" => for (i <- 1 to length) {temp_arr(y - 1)(x + i - 2) = " 1 "}
+      }
     }
+    else {
+      return arr
+    }
+    arr = temp_arr
     arr
   }
 
