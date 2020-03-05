@@ -1,7 +1,7 @@
 package day4.battleships
 
 class Board() {
-  var arr: Array[Array[String]] = Array.ofDim[String](12, 12)
+  val arr: Array[Array[String]] = Array.ofDim[String](12, 12)
   var vis_arr: Array[Array[String]]  = Array.ofDim[String](12, 12)
   for (i <- 0 until 12) {
     for (j <- 0 until 12) {
@@ -71,7 +71,6 @@ class Board() {
     else {
       return false
     }
-    arr = temp_arr
     true
   }
 

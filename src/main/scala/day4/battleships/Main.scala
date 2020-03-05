@@ -81,5 +81,5 @@ object Main extends App {
    core()
  }
 
-  play()
+  core()
 }
