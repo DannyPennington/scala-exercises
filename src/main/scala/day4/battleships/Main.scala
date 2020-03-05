@@ -18,7 +18,7 @@ object Main extends App {
     while (ships<6) {
       if (board.addShip(scala.io.StdIn.readLine(s"Enter ship $ships length: ").toInt, scala.io.StdIn.readLine("Enter starting y coord: ").toInt, scala.io.StdIn.readLine("Enter starting x coord: ").toInt, scala.io.StdIn.readLine("Enter ship direction (up/down/left/right): ").toString)) {
         ships += 1
-        board.printGrid()
+        board.printSecret()
       }
     }
   }
@@ -39,36 +39,47 @@ object Main extends App {
         }
       }
     }
-    if (player1.lose()) {println("Player 2 wins, congrats")}
-    else { println("Player 1 wins, congrats")}
+    if (player1.lose()) {println("Player 2 wins, congrats")
+      println("Winner's board: ")
+      player2.printSecret()}
+    else { println("Player 1 wins, congrats")
+      println("Winner's board: ")
+      player1.printSecret()}
   }
 
   def core2():Unit = {
-    println("Player 2 to shoot: ")
-    player1.printGrid()
+    while (!player1.lose && !player2.lose) {
+      println("Player 2 to shoot: ")
+      player1.printGrid()
       if (player1.shoot(scala.io.StdIn.readLine("Y coord: ").toInt, scala.io.StdIn.readLine("X coord: ").toInt)) {
         core2()
       }
       else {
         core()
       }
+    }
+    if (player1.lose()) {println("Player 2 wins, congrats")
+      println("Winner's board: ")
+      player2.printSecret()}
+    else { println("Player 1 wins, congrats")
+      println("Winner's board: ")
+      player1.printSecret()}
   }
 
   def play():Unit = {
    val player1 = new Board
    val player2 = new Board
+
    println("Player 2 look away while player 1 sets up ships!")
    shipSetup(player1)
    for (i <- 0 to 12) {println("")}
+
    println("Now player 1 look away while player 2 sets up ships!")
    Thread.sleep(3000)
    shipSetup(player2)
 
    core()
-
-
-
  }
 
-  core()
+  play()
 }

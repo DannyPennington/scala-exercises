@@ -2,13 +2,30 @@ package day4.battleships
 
 class Board() {
   var arr: Array[Array[String]] = Array.ofDim[String](12, 12)
+  var vis_arr: Array[Array[String]]  = Array.ofDim[String](12, 12)
   for (i <- 0 until 12) {
     for (j <- 0 until 12) {
+      vis_arr(i)(j) = " ~ "
       arr(i)(j) = " ~ "
     }
   }
 
   def printGrid(size: Int = 12): Unit = {
+    print("      A  B  C  D  E  F  G  H  I  J  K  L")
+    println("")
+    for (i <- 0 until size) {
+      if (i < 9) {
+        print(s"  ${i + 1}  ")
+      }
+      else {
+        print(s"  ${i + 1} ")
+      }
+      vis_arr(i).foreach(print)
+      println("")
+    }
+    println("")
+  }
+  def printSecret(size: Int = 12): Unit = {
     print("      A  B  C  D  E  F  G  H  I  J  K  L")
     println("")
     for (i <- 0 until size) {
@@ -61,11 +78,12 @@ class Board() {
   def shoot(y:Int, x:Int ):Boolean = {
     if (arr(y-1)(x-1) == " 1 ") {
       println("That's a hit")
+      vis_arr(y-1)(x-1) = " X "
       arr(y-1)(x-1) = " X "
       true
     }
     else{ println("You missed")
-      arr(y-1)(x-1) = " O "
+      vis_arr(y-1)(x-1) = " O "
       false
     }
 
