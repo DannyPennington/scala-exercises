@@ -7,7 +7,7 @@ object Main extends App {
   val weights = Array(2,2,2,2,2)
   var wins = 0
   var losses = 0
-  var previous = ArrayBuffer.empty[String]
+  val previous = ArrayBuffer.empty[String]
 
   def userChoice():String ={
     scala.io.StdIn.readLine("Rock, Paper, Scissors, Lizard, Spock? ").toString
