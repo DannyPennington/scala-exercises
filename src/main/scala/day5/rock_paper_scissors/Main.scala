@@ -10,7 +10,9 @@ import scala.util.Random
 
  */
 object Main extends App {
-  val weights = Array(3,3,3,3,3)
+  val weights = Array(2,2,2,2,2)
+  var wins = 0
+  var losses = 0
 
   def userChoice():String ={
     scala.io.StdIn.readLine("Rock, Paper, Scissors, Lizard, Spock? ").toString
@@ -44,16 +46,15 @@ object Main extends App {
     "Spock"
   }
 
-
   def rock(other: String, weight:Array[Int]):Unit = {
     weight(1) +=1
     weight(4) +=1
     other match {
       case "Rock" => println("It's a tie!")
-      case "Paper" => println("Paper covers Rock!")
-      case "Scissors" => println("Rock crushes scissors")
-      case "Lizard" => println("Rock crushes Lizard!")
-      case "Spock" => println("Spock vaporizes Rock!")
+      case "Paper" => println("Paper covers Rock!"); losses += 1
+      case "Scissors" => println("Rock crushes scissors"); wins += 1
+      case "Lizard" => println("Rock crushes Lizard!"); wins += 1
+      case "Spock" => println("Spock vaporizes Rock!"); losses += 1
       case _ => println("Something went wrong...")
     }
   }
@@ -62,11 +63,11 @@ object Main extends App {
     weight(2) +=1
     weight(3) +=1
     other match {
-      case "Rock" => println("Paper covers Rock!")
+      case "Rock" => println("Paper covers Rock!"); wins += 1
       case "Paper" => println("It's a tie!")
-      case "Scissors" => println("Scissors cut paper")
-      case "Lizard" => println("Lizard eats Paper")
-      case "Spock" => println("Paper disproves spock")
+      case "Scissors" => println("Scissors cut paper"); losses += 1
+      case "Lizard" => println("Lizard eats Paper"); losses += 1
+      case "Spock" => println("Paper disproves spock"); wins += 1
       case _ => println("Something went wrong...")
     }
   }
@@ -75,11 +76,11 @@ object Main extends App {
     weight(0) +=1
     weight(4) +=1
     other match {
-      case "Rock" => println("Rock crushes Scissors!")
-      case "Paper" => println("Scissors cut Paper!")
+      case "Rock" => println("Rock crushes Scissors!"); losses += 1
+      case "Paper" => println("Scissors cut Paper!"); wins += 1
       case "Scissors" => println("It's a tie!")
-      case "Lizard" => println("Scissors decapitate Lizard!")
-      case "Spock" => println("Spock smashes scissors!")
+      case "Lizard" => println("Scissors decapitate Lizard!"); wins += 1
+      case "Spock" => println("Spock smashes scissors!"); losses += 1
       case _ => println("Something went wrong...")
     }
   }
@@ -88,11 +89,11 @@ object Main extends App {
     weight(0) +=1
     weight(2) +=1
     other match {
-      case "Rock" => println("Rock crushes Lizard!")
-      case "Paper" => println("Lizard eats Paper!")
-      case "Scissors" => println("Scissors decapitate Lizard!")
+      case "Rock" => println("Rock crushes Lizard!"); losses += 1
+      case "Paper" => println("Lizard eats Paper!"); wins += 1
+      case "Scissors" => println("Scissors decapitate Lizard!"); losses += 1
       case "Lizard" => println("It's a tie!")
-      case "Spock" => println("Lizard poisons Spock!")
+      case "Spock" => println("Lizard poisons Spock!"); wins += 1
       case _ => println("Something went wrong...")
     }
   }
@@ -101,15 +102,14 @@ object Main extends App {
     weight(1) +=1
     weight(3) +=1
     other match {
-      case "Rock" => println("Spock vaporizes Rock!")
-      case "Paper" => println("Paper disproves Spock!")
-      case "Scissors" => println("Spock smashes Scissors!")
-      case "Lizard" => println("Lizard poisons Spock")
+      case "Rock" => println("Spock vaporizes Rock!"); wins += 1
+      case "Paper" => println("Paper disproves Spock!"); losses += 1
+      case "Scissors" => println("Spock smashes Scissors!"); wins += 1
+      case "Lizard" => println("Lizard poisons Spock"); losses += 1
       case "Spock" => println("It's a tie")
       case _ => println("Something went wrong...")
     }
   }
-
 
   def resolve(user: String, ai: String, weights: Array[Int]):Unit = {
     user match {
@@ -127,7 +127,7 @@ object Main extends App {
     if (validate(choice)) {
       resolve(choice, weightedAI(weights), weights)
       println("")
-      testing(weights)
+      print(s"Wins: $wins   Losses: $losses")
       playAgain()
     }
     else {
