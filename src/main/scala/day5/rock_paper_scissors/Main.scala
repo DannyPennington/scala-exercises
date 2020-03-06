@@ -15,6 +15,17 @@ object Main extends App {
     scala.io.StdIn.readLine("Rock, Paper, Scissors, Lizard, Spock? ").toString
   }
 
+  def validate(choice:String):Boolean = {
+    choice match {
+      case "Rock" | "rock" => true
+      case "Paper" | "paper" => true
+      case "Scissors" | "scissors" => true
+      case "Lizard" | "lizard" => true
+      case "Spock" | "spock" => true
+      case _ => false
+    }
+  }
+
   def aiChoice(): String = {
     val choices = Array("Rock", "Paper", "Scissors", "Lizard", "Spock")
     choices(Random.nextInt(choices.length))
@@ -86,12 +97,21 @@ object Main extends App {
     }
   }
 
+  @scala.annotation.tailrec
   def play():Unit = {
-    resolve(userChoice(),aiChoice())
-    playAgain()
+    val choice = userChoice()
+    if (validate(choice)) {
+      resolve(choice, aiChoice())
+      playAgain()
+    }
+    else {
+        println("Please enter valid choice")
+        play()
+      }
   }
 
   def playAgain():Unit = {
+    println("")
     if (scala.io.StdIn.readLine("Play again? ") == "yes") {
       play()
     }
