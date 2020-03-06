@@ -10,7 +10,7 @@ import scala.util.Random
 
  */
 object Main extends App {
-  var weights = Array(1,1,1,1,1)
+  var weights = Array(3,3,3,3,3)
 
   def userChoice():String ={
     scala.io.StdIn.readLine("Rock, Paper, Scissors, Lizard, Spock? ").toString
@@ -46,7 +46,8 @@ object Main extends App {
   }
 
   def rock(other: String, weight:Array[Int]):Unit = {
-    weight(0) +=1
+    weight(1) +=1
+    weight(4) +=1
     other match {
       case "Rock" => println("It's a tie!")
       case "Paper" => println("Paper covers Rock!")
@@ -58,7 +59,8 @@ object Main extends App {
   }
 
   def paper(other: String, weight:Array[Int]):Unit = {
-    weight(1) +=1
+    weight(2) +=1
+    weight(3) +=1
     other match {
       case "Rock" => println("Paper covers Rock!")
       case "Paper" => println("It's a tie!")
@@ -70,7 +72,8 @@ object Main extends App {
   }
 
   def scissors(other: String, weight:Array[Int]):Unit = {
-    weight(2) +=1
+    weight(0) +=1
+    weight(4) +=1
     other match {
       case "Rock" => println("Rock crushes Scissors!")
       case "Paper" => println("Scissors cut Paper!")
@@ -82,7 +85,8 @@ object Main extends App {
   }
 
   def lizard(other: String, weight:Array[Int]):Unit = {
-    weight(3) +=1
+    weight(0) +=1
+    weight(2) +=1
     other match {
       case "Rock" => println("Rock crushes Lizard!")
       case "Paper" => println("Lizard eats Paper!")
@@ -94,7 +98,8 @@ object Main extends App {
   }
 
   def spock(other: String, weight:Array[Int]):Unit = {
-    weight(4) +=1
+    weight(1) +=1
+    weight(3) +=1
     other match {
       case "Rock" => println("Spock vaporizes Rock!")
       case "Paper" => println("Paper disproves Spock!")
