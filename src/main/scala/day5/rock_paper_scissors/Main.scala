@@ -44,6 +44,7 @@ object Main extends App {
     "Spock"
   }
 
+
   def rock(other: String, weight:Array[Int]):Unit = {
     weight(1) +=1
     weight(4) +=1
@@ -143,9 +144,7 @@ object Main extends App {
   }
 
   def testing(weights:Array[Int]): Unit = {
-    for (i <- 0 until 5)
-      print(weights(i), "")
+    println(weights.mkString(" "))
   }
-
   play()
 }
