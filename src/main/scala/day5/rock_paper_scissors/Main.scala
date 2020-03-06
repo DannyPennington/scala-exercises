@@ -10,7 +10,7 @@ import scala.util.Random
 
  */
 object Main extends App {
-  var weights = Array(3,3,3,3,3)
+  val weights = Array(3,3,3,3,3)
 
   def userChoice():String ={
     scala.io.StdIn.readLine("Rock, Paper, Scissors, Lizard, Spock? ").toString
@@ -35,7 +35,6 @@ object Main extends App {
   def weightedAI(weights: Array[Int]): String = {
     var num = Random.nextInt(weights.sum)
     val choices = Array("Rock", "Paper", "Scissors", "Lizard", "Spock")
-    var save = ""
     for (i <- 0 until 5) {
       num -= weights(i)
       if (num <= 0) {
