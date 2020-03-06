@@ -10,6 +10,7 @@ import scala.util.Random
 
  */
 object Main extends App {
+  var weights = Array(1,1,1,1,1)
 
   def userChoice():String ={
     scala.io.StdIn.readLine("Rock, Paper, Scissors, Lizard, Spock? ").toString
@@ -31,7 +32,21 @@ object Main extends App {
     choices(Random.nextInt(choices.length))
   }
 
-  def rock(other: String):Unit = {
+  def weightedAI(weights: Array[Int]): String = {
+    var num = Random.nextInt(weights.sum)
+    val choices = Array("Rock", "Paper", "Scissors", "Lizard", "Spock")
+    var save = ""
+    for (i <- 0 until 5) {
+      num -= weights(i)
+      if (num <= 0) {
+        return choices(i)
+      }
+    }
+    "Spock"
+  }
+
+  def rock(other: String, weight:Array[Int]):Unit = {
+    weight(0) +=1
     other match {
       case "Rock" => println("It's a tie!")
       case "Paper" => println("Paper covers Rock!")
@@ -42,7 +57,8 @@ object Main extends App {
     }
   }
 
-  def paper(other: String):Unit = {
+  def paper(other: String, weight:Array[Int]):Unit = {
+    weight(1) +=1
     other match {
       case "Rock" => println("Paper covers Rock!")
       case "Paper" => println("It's a tie!")
@@ -53,7 +69,8 @@ object Main extends App {
     }
   }
 
-  def scissors(other: String):Unit = {
+  def scissors(other: String, weight:Array[Int]):Unit = {
+    weight(2) +=1
     other match {
       case "Rock" => println("Rock crushes Scissors!")
       case "Paper" => println("Scissors cut Paper!")
@@ -64,7 +81,8 @@ object Main extends App {
     }
   }
 
-  def lizard(other: String):Unit = {
+  def lizard(other: String, weight:Array[Int]):Unit = {
+    weight(3) +=1
     other match {
       case "Rock" => println("Rock crushes Lizard!")
       case "Paper" => println("Lizard eats Paper!")
@@ -75,7 +93,8 @@ object Main extends App {
     }
   }
 
-  def spock(other: String):Unit = {
+  def spock(other: String, weight:Array[Int]):Unit = {
+    weight(4) +=1
     other match {
       case "Rock" => println("Spock vaporizes Rock!")
       case "Paper" => println("Paper disproves Spock!")
@@ -87,13 +106,13 @@ object Main extends App {
   }
 
 
-  def resolve(user: String, ai: String):Unit = {
+  def resolve(user: String, ai: String, weights: Array[Int]):Unit = {
     user match {
-      case "Rock" | "rock" => rock(ai)
-      case "Paper" | "paper" => paper(ai)
-      case "Scissors" | "scissors" => scissors(ai)
-      case "Lizard" | "lizard" => lizard(ai)
-      case "Spock" | "spock" => spock(ai)
+      case "Rock" | "rock" => rock(ai, weights)
+      case "Paper" | "paper" => paper(ai, weights)
+      case "Scissors" | "scissors" => scissors(ai, weights)
+      case "Lizard" | "lizard" => lizard(ai, weights)
+      case "Spock" | "spock" => spock(ai, weights)
     }
   }
 
@@ -101,7 +120,9 @@ object Main extends App {
   def play():Unit = {
     val choice = userChoice()
     if (validate(choice)) {
-      resolve(choice, aiChoice())
+      resolve(choice, weightedAI(weights), weights)
+      println("")
+      testing(weights)
       playAgain()
     }
     else {
@@ -112,9 +133,14 @@ object Main extends App {
 
   def playAgain():Unit = {
     println("")
-    if (scala.io.StdIn.readLine("Play again? ") == "yes") {
+    if (scala.io.StdIn.readLine("Play again? ") == "y" ) {
       play()
     }
+  }
+
+  def testing(weights:Array[Int]): Unit = {
+    for (i <- 0 until 5)
+      print(weights(i), "")
   }
 
   play()
