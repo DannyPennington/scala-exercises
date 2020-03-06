@@ -1,18 +1,13 @@
 package day5.rock_paper_scissors
+import scala.collection.mutable.ArrayBuffer
 import scala.util.Random
 
-/* Challenge breakdown
- * 1) Ask user for their choice
- * 2) Get AI to make choice
- * 3) Compare choices to see who wins
- * MVP
- * 4) Weight AI choice based on previous player choices
 
- */
 object Main extends App {
   val weights = Array(2,2,2,2,2)
   var wins = 0
   var losses = 0
+  var previous = ArrayBuffer.empty[String]
 
   def userChoice():String ={
     scala.io.StdIn.readLine("Rock, Paper, Scissors, Lizard, Spock? ").toString
@@ -46,7 +41,19 @@ object Main extends App {
     "Spock"
   }
 
-  def rock(other: String, weight:Array[Int]):Unit = {
+  def patternAI(previous: ArrayBuffer[String]):String = {
+    val choices = Array("Rock", "Paper", "Scissors", "Lizard", "Spock")
+    if (previous.length>=5) {
+
+    }
+    else {
+      choices(Random.nextInt(choices.length))
+    }
+
+    ""
+  }
+
+  def rock(other: String, weight:Array[Int]):String = {
     weight(1) +=1
     weight(4) +=1
     other match {
@@ -57,9 +64,10 @@ object Main extends App {
       case "Spock" => println("Spock vaporizes Rock!"); losses += 1
       case _ => println("Something went wrong...")
     }
+    "rock"
   }
 
-  def paper(other: String, weight:Array[Int]):Unit = {
+  def paper(other: String, weight:Array[Int]):String = {
     weight(2) +=1
     weight(3) +=1
     other match {
@@ -70,9 +78,10 @@ object Main extends App {
       case "Spock" => println("Paper disproves spock"); wins += 1
       case _ => println("Something went wrong...")
     }
+    "paper"
   }
 
-  def scissors(other: String, weight:Array[Int]):Unit = {
+  def scissors(other: String, weight:Array[Int]):String = {
     weight(0) +=1
     weight(4) +=1
     other match {
@@ -83,9 +92,10 @@ object Main extends App {
       case "Spock" => println("Spock smashes scissors!"); losses += 1
       case _ => println("Something went wrong...")
     }
+    "scissors"
   }
 
-  def lizard(other: String, weight:Array[Int]):Unit = {
+  def lizard(other: String, weight:Array[Int]):String = {
     weight(0) +=1
     weight(2) +=1
     other match {
@@ -96,9 +106,10 @@ object Main extends App {
       case "Spock" => println("Lizard poisons Spock!"); wins += 1
       case _ => println("Something went wrong...")
     }
+    "lizard"
   }
 
-  def spock(other: String, weight:Array[Int]):Unit = {
+  def spock(other: String, weight:Array[Int]):String = {
     weight(1) +=1
     weight(3) +=1
     other match {
@@ -109,15 +120,16 @@ object Main extends App {
       case "Spock" => println("It's a tie")
       case _ => println("Something went wrong...")
     }
+    "spock"
   }
 
-  def resolve(user: String, ai: String, weights: Array[Int]):Unit = {
+  def resolve(user: String, ai: String, weights: Array[Int], previous: ArrayBuffer[String]):Unit = {
     user match {
-      case "Rock" | "rock" => rock(ai, weights)
-      case "Paper" | "paper" => paper(ai, weights)
-      case "Scissors" | "scissors" => scissors(ai, weights)
-      case "Lizard" | "lizard" => lizard(ai, weights)
-      case "Spock" | "spock" => spock(ai, weights)
+      case "Rock" | "rock" => previous += rock(ai, weights)
+      case "Paper" | "paper" => previous += paper(ai, weights)
+      case "Scissors" | "scissors" => previous += scissors(ai, weights)
+      case "Lizard" | "lizard" => previous += lizard(ai, weights)
+      case "Spock" | "spock" => previous += spock(ai, weights)
     }
   }
 
@@ -125,9 +137,11 @@ object Main extends App {
   def play():Unit = {
     val choice = userChoice()
     if (validate(choice)) {
-      resolve(choice, weightedAI(weights), weights)
+      resolve(choice, weightedAI(weights), weights, previous)
       println("")
       print(s"Wins: $wins   Losses: $losses")
+      println("")
+      println(previous)
       playAgain()
     }
     else {
