@@ -33,12 +33,13 @@ object Main extends App {
     var num = Random.nextInt(weights.sum)
     val choices = Array("Rock", "Paper", "Scissors", "Lizard", "Spock")
     for (i <- 0 until 5) {
+      var returner = Option[String]
       num -= weights(i)
-      if (num <= 0) {
-        return choices(i)
+      if (num <= 0 && !returner.isDefined) {
+        returner = Some(choices(i))
       }
     }
-    "Spock"
+    returner.getOrElse("Spock")
   }
 
   def patternAI(previous: ArrayBuffer[String]):String = {
