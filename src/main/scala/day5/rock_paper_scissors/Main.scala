@@ -43,10 +43,7 @@ object Main extends App {
 
   def patternAI(previous: ArrayBuffer[String]):String = {
     val choices = Array("Rock", "Paper", "Scissors", "Lizard", "Spock")
-    if (previous.length>=5) {
-
-    }
-    else {
+    if (previous.length<5) {
       choices(Random.nextInt(choices.length))
     }
 
