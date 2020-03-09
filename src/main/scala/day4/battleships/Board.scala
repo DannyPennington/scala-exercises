@@ -37,9 +37,8 @@ class Board() {
 
   def addShip(length: Int, y: Int, x: Int, direction: String): Boolean = {
     if (checkValid(y, x)) {
-      arr(y - 1)(x - 1) = " 1 "
       direction match {
-        case "up" | "Up" => if (y-length>=0) {for (i <- 1 to length) {
+        case "up" | "Up" => if (y-length>=1) {for (i <- 1 to length) {
           if (checkValid(y-i,x)){
           arr(y - i)(x - 1) = " 1 "
         }}}
@@ -53,7 +52,7 @@ class Board() {
         else {arr(y - 1)(x - 1) = " ~ "
         return false
         }
-        case "left" | "Left" => if (x-length>=0) {for (i <- 1 to length) {
+        case "left" | "Left" => if (x-length>=1) {for (i <- 1 to length) {
           if (checkValid(y,x-i)) {
           arr(y - 1)(x - i) = " 1 "
         }}}
