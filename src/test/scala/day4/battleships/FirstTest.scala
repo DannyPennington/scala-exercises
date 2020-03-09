@@ -16,7 +16,7 @@ class FirstTest extends UnitSpec  {
     assert((List(1) zip board.arr.flatMap(_.toList)).toMap.keys.size == 1)
   }
 
-  "CheckValid method" should "return true if the tile doesn't have a ship already there else false" in {
+  "checkValid method" should "return true if the tile doesn't have a ship already there else false" in {
     assert(board.checkValid(5,5))
     assert(board.checkValid(12,12))
     assert(board.checkValid(1,1))
@@ -24,7 +24,13 @@ class FirstTest extends UnitSpec  {
     assert(!board.checkValid(4,4))
   }
 
-  "AddShip method" should "alter the array to reflect the added ship"
+  "AddShip method" should "alter the array to reflect the added ship and not alter the visible array" in {
+    board.addShip(2,8,8,"up")
+    assert(board.arr(7)(7) == " 1 ")
+    assert(board.visarr(7)(7) == " ~ ")
+    assert(board.arr(6)(7) == " 1 ")
+    assert(board.visarr(6)(7) == " ~ ")
+  }
 
 
 }
