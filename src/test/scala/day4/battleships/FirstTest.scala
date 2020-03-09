@@ -20,8 +20,8 @@ class FirstTest extends UnitSpec  {
     assert(board.checkValid(5,5))
     assert(board.checkValid(12,12))
     assert(board.checkValid(1,1))
-    board.addShip(1,4,4,"up")
-    assert(!board.checkValid(4,4))
+    board.addShip(1,1,1,"up")
+    assert(!board.checkValid(1,1))
   }
 
   "AddShip method" should "alter the array to reflect the added ship and not alter the visible array" in {
@@ -32,5 +32,23 @@ class FirstTest extends UnitSpec  {
     assert(board.visarr(6)(7) == " ~ ")
   }
 
+  "Shoot method" should "alter both arrays to display either a hit or miss" in {
+    board.addShip(2,8,8,"up")
+    board.shoot(8,8)
+    board.shoot(4,4)
+    assert(board.arr(7)(7) == " X ")
+    assert(board.visarr(7)(7) == " X ")
+    assert(board.arr(3)(3) == " 0 ")
+    assert(board.visarr(3)(3) == " 0 ")
+  }
 
+  "Lose method" should "return true when the board has no more ships remaining, else false" in {
+    val board2 = new Board
+    assert(board2.lose)
+    board2.addShip(1,1,1,"up")
+    assert(!board2.lose)
+    board2.shoot(1,1)
+    assert(board2.lose)
+
+  }
 }
