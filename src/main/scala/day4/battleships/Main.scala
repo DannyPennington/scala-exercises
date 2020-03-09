@@ -1,4 +1,5 @@
 package day4.battleships
+import scala.util.Random
 
 object Main extends App {
   val player1 = new Board
@@ -17,6 +18,15 @@ object Main extends App {
         board.printEither(board.arr)
       }
     }
+  }
+
+  def aiSetup(board:Board):Unit = {
+    val directions = List("up","down","left","right")
+    board.addShip(2,Random.nextInt(11)+1,Random.nextInt(11)+1,directions(Random.nextInt(4)))
+    board.addShip(3,Random.nextInt(11)+1,Random.nextInt(11)+1,directions(Random.nextInt(4)))
+    board.addShip(4,Random.nextInt(11)+1,Random.nextInt(11)+1,directions(Random.nextInt(4)))
+    board.addShip(5,Random.nextInt(11)+1,Random.nextInt(11)+1,directions(Random.nextInt(4)))
+    board.addShip(7,Random.nextInt(11)+1,Random.nextInt(11)+1,directions(Random.nextInt(4)))
   }
 
   def core():Unit = {
@@ -64,6 +74,14 @@ object Main extends App {
     else { println("Player 1 wins, congrats")
       println("Winner's board: ")
       player1.printEither(player1.arr)}
- }
-  test()
+  }
+
+  def aiPlay():Unit = {
+    println("Set up your board!")
+    shipSetup(player1)
+  }
+
+
+  aiSetup(player2)
+  player2.printEither(player2.arr)
 }
