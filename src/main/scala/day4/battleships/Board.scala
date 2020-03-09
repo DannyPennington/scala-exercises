@@ -35,7 +35,7 @@ class Board() {
       println("")
       false
     }
-    }
+  }
 
   def addShip(length: Int, y: Int, x: Int, direction: String): Boolean = {
     val temparr = arr
@@ -60,20 +60,21 @@ class Board() {
   }
 
   def shoot(y:Int, x:Int ):Boolean = {
-    if (arr(y-1)(x-1) == " 1 ") {
-      println("That's a hit")
-      visarr(y-1)(x-1) = " X "
-      arr(y-1)(x-1) = " X "
-      true
-    }
-    else{ println("You missed")
-      visarr(y-1)(x-1) = " O "
-      false
-    }
+      if (arr(y - 1)(x - 1) == " 1 ") {
+        println("That's a hit")
+        visarr(y - 1)(x - 1) = " X "
+        arr(y - 1)(x - 1) = " X "
+        true
+      }
+      else {
+        println("You missed")
+        visarr(y - 1)(x - 1) = " O "
+        arr(y - 1)(x - 1) = " O "
+        false
+      }
   }
 
-  def lose():Boolean = {
-
+  def lose :Boolean = {
     for (i <- 0 until 12) {
       for (j <- 0 until 12) {
         if (arr(i)(j) == " 1 ") {

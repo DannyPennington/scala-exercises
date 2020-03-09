@@ -50,7 +50,6 @@ object Main extends App {
   }
 
   def play():Unit = {
-
    println("Player 2 look away while player 1 sets up ships!")
    shipSetup(player1)
    for (i <- 0 to 12) {println("")}
@@ -59,12 +58,12 @@ object Main extends App {
    shipSetup(player2)
 
    core()
-    if (player1.lose()) {println("Player 2 wins, congrats")
+    if (player1.lose) {println("Player 2 wins, congrats")
       println("Winner's board: ")
       player2.printEither(player2.arr)}
     else { println("Player 1 wins, congrats")
       println("Winner's board: ")
       player1.printEither(player1.arr)}
  }
-  play()
+  test()
 }
