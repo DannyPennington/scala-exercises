@@ -74,9 +74,6 @@ class Board() {
   }
 
   def lose :Boolean = {
-    if (arr.flatMap(_.toList).contains(" 1 ")) {
-      false}
-    else {
-      true}
-  }
+    if (arr.flatMap(_.toList).contains(" 1 ")) false
+    else true
 }
