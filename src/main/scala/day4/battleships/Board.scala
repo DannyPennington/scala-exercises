@@ -74,13 +74,9 @@ class Board() {
   }
 
   def lose :Boolean = {
-    for (i <- 0 until 12) {
-      for (j <- 0 until 12) {
-        if (arr(i)(j) == " 1 ") {
-          return false
-        }
-      }
-    }
-  true
+    if (arr.flatMap(_.toList).contains(" 1 ")) {
+      false}
+    else {
+      true}
   }
 }
