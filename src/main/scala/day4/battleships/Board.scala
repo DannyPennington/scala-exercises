@@ -41,17 +41,30 @@ class Board() {
     if (checkValid(y, x)) {
       arr(y - 1)(x - 1) = " 1 "
       direction match {
-        case "up" | "Up" => for (i <- 1 to length) {
+        case "up" | "Up" => if (y-length>=0) {for (i <- 1 to length) {
           arr(y - i)(x - 1) = " 1 "
+        }}
+        else {arr(y - 1)(x - 1) = " ~ "
+        return false
         }
-        case "down" | "Down" => for (i <- 1 to length) {
+        case "down" | "Down" => if (y+length <=12) {for (i <- 1 to length) {
           arr(y + i - 2)(x - 1) = " 1 "
+        }}
+        else {arr(y - 1)(x - 1) = " ~ "
+        return false
         }
-        case "left" | "Left" => for (i <- 1 to length) {
+        case "left" | "Left" => if (x-length>=0) {for (i <- 1 to length) {
           arr(y - 1)(x - i) = " 1 "
+        }}
+        else {arr(y - 1)(x - 1) = " ~ "
+        return false
         }
-        case "right" | "Right" => for (i <- 1 to length) {
+        case "right" | "Right" => if (x+length<=12) {for (i <- 1 to length) {
           arr(y - 1)(x + i - 2) = " 1 "
+        }}
+        else {
+          arr(y - 1)(x - 1) = " ~ "
+          return false
         }
         case _ =>
           arr(y - 1)(x - 1) = " ~ "
