@@ -70,7 +70,6 @@ class Board() {
       visarr(y-1)(x-1) = " O "
       false
     }
-
   }
 
   def lose():Boolean = {

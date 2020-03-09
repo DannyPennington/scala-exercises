@@ -1,26 +1,14 @@
 package day4.battleships
 
 object Main extends App {
-
-  def test():Unit = {
-    val player1 = new Board
-    val player2 = new Board
-    player1.addShip(3,1,1,"right")
-    player2.addShip(4,1,1,"right")
-    core()
-
-  }
   val player1 = new Board
   val player2 = new Board
-  player1.addShip(3,1,1,"right")
-  //player1.printEither(player1.visarr)
-  player2.addShip(4,1,1,"right")
-  //player1.shoot(y=1,x=1)
-  //player1.shoot(y=1,x=2)
-  //player1.shoot(y=1,x=3)
-  //player1.shoot(y=5,x=5)
+  def test():Unit = {
+    player1.addShip(3,2,2,"right")
+    player2.addShip(4,5,5,"right")
+    core()
+  }
 
-  //println(player1.lose())
   def shipSetup(board: Board): Unit = {
     var ships = 1
     while (ships<6) {
@@ -30,7 +18,6 @@ object Main extends App {
       }
     }
   }
-
 
   def core():Unit = {
     while (!player1.lose && !player2.lose) {
@@ -63,13 +50,10 @@ object Main extends App {
   }
 
   def play():Unit = {
-   val player1 = new Board
-   val player2 = new Board
 
    println("Player 2 look away while player 1 sets up ships!")
    shipSetup(player1)
    for (i <- 0 to 12) {println("")}
-
    println("Now player 1 look away while player 2 sets up ships!")
    Thread.sleep(3000)
    shipSetup(player2)
@@ -82,7 +66,5 @@ object Main extends App {
       println("Winner's board: ")
       player1.printEither(player1.arr)}
  }
-
-  core()
-
+  play()
 }
