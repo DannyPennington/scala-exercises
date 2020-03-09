@@ -29,17 +29,29 @@ object Main extends App {
     choices(Random.nextInt(choices.length))
   }
 
+  //def weightedAI(weights: Array[Int]): String = {
+  //  var num = Random.nextInt(weights.sum)
+  //  val choices = Array("Rock", "Paper", "Scissors", "Lizard", "Spock")
+  //  var returner = Some[String]
+  //  for (i <- 0 until 5) {
+  //    num -= weights(i)
+  //    if (num <= 0 && returner.isDefined) {
+  //      returner = Some(choices(i))
+  //    }
+  //  }
+  //  returner.getOrElse("Spock")
+  //}
+
   def weightedAI(weights: Array[Int]): String = {
     var num = Random.nextInt(weights.sum)
     val choices = Array("Rock", "Paper", "Scissors", "Lizard", "Spock")
     for (i <- 0 until 5) {
-      var returner = Option[String]
       num -= weights(i)
-      if (num <= 0 && !returner.isDefined) {
-        returner = Some(choices(i))
+      if (num <= 0) {
+        return choices(i)
       }
     }
-    returner.getOrElse("Spock")
+    "Spock"
   }
 
   def patternAI(previous: ArrayBuffer[String]):String = {
