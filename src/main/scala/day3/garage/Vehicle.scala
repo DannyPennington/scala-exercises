@@ -9,8 +9,8 @@ abstract class Vehicle {
   def model: String
   var ID:Int = 0
   var working:Boolean = false
-  var part_list:ArrayBuffer[Part]
-  part_list += Part("Engine", 500, 60, false)
+  //var part_list:ArrayBuffer[Part]
+  //part_list += Part("Engine", 500, 60, false)
 
 
   def fixVehicle():Unit = {
