@@ -21,12 +21,16 @@ object Main extends App {
   }
 
   def aiSetup(board:Board):Unit = {
-    val directions = List("up","down","left","right")
-    board.addShip(2,Random.nextInt(11)+1,Random.nextInt(11)+1,directions(Random.nextInt(4)))
-    board.addShip(3,Random.nextInt(11)+1,Random.nextInt(11)+1,directions(Random.nextInt(4)))
-    board.addShip(4,Random.nextInt(11)+1,Random.nextInt(11)+1,directions(Random.nextInt(4)))
-    board.addShip(5,Random.nextInt(11)+1,Random.nextInt(11)+1,directions(Random.nextInt(4)))
-    board.addShip(7,Random.nextInt(11)+1,Random.nextInt(11)+1,directions(Random.nextInt(4)))
+    var ships = 1
+    val directions = List("up", "down", "left", "right")
+    while (ships < 6)
+      ships match {
+        case 1 => if (board.addShip (2, Random.nextInt (11) + 1, Random.nextInt (11) + 1, directions (Random.nextInt (4) ) ) ) {ships +=1} else {}
+        case 2 => if (board.addShip (3, Random.nextInt (11) + 1, Random.nextInt (11) + 1, directions (Random.nextInt (4) ) ) ) {ships +=1} else {}
+        case 3 => if (board.addShip (4, Random.nextInt (11) + 1, Random.nextInt (11) + 1, directions (Random.nextInt (4) ) ) ) {ships +=1} else {}
+        case 4 => if (board.addShip (5, Random.nextInt (11) + 1, Random.nextInt (11) + 1, directions (Random.nextInt (4) ) ) ) {ships +=1} else {}
+        case 5 => if (board.addShip (7, Random.nextInt (11) + 1, Random.nextInt (11) + 1, directions (Random.nextInt (4) ) ) ) {ships +=1} else {}
+      }
   }
 
   def core():Unit = {
