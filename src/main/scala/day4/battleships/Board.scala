@@ -38,16 +38,15 @@ class Board() {
   }
 
   def addShip(length: Int, y: Int, x: Int, direction: String): Boolean = {
-    val temparr = arr
     if (checkValid(y,x)){
-      temparr(y - 1)(x - 1) = " 1 "
+      arr(y - 1)(x - 1) = " 1 "
       direction match {
-        case "up" | "Up" => for (i <- 1 to length) {temparr(y - i)(x - 1) = " 1 "}
-        case "down" | "Down" => for (i <- 1 to length) {temparr(y + i - 2)(x - 1) = " 1 "}
-        case "left" | "Left" => for (i <- 1 to length) {temparr(y - 1)(x - i) = " 1 "}
-        case "right" | "Right" => for (i <- 1 to length) {temparr(y - 1)(x + i - 2) = " 1 "}
+        case "up" | "Up" => for (i <- 1 to length) {arr(y - i)(x - 1) = " 1 "}
+        case "down" | "Down" => for (i <- 1 to length) {arr(y + i - 2)(x - 1) = " 1 "}
+        case "left" | "Left" => for (i <- 1 to length) {arr(y - 1)(x - i) = " 1 "}
+        case "right" | "Right" => for (i <- 1 to length) {arr(y - 1)(x + i - 2) = " 1 "}
         case _ =>
-          temparr(y - 1)(x - 1) = " ~ "
+          arr(y - 1)(x - 1) = " ~ "
           println("Please enter a valid selection!")
           println("")
           return false
@@ -68,8 +67,8 @@ class Board() {
       }
       else {
         println("You missed")
-        visarr(y - 1)(x - 1) = " O "
-        arr(y - 1)(x - 1) = " O "
+        visarr(y - 1)(x - 1) = " 0 "
+        arr(y - 1)(x - 1) = " 0 "
         false
       }
   }
